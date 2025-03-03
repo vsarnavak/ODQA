@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tamil ODQA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Tamil ODQA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <a class="nav-link" style="color: rgb(54, 98, 221);" href="https://www.youtube.com/">Profile</a>
+
+        </ul>
+    </div>
+</nav>
+
+
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <title>Enter data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="vh-auto row h-100 justify-content-center align-items-center" style="padding-top: 50px;">
+        <div class="col-2 col-md-4 col-sm-8 my-auto">
+            <div class="card justify-content-center">
+                <div class="card-header">
+                    <h4 class="text-center">Model Search</h4>
+                </div>
+                <div class="card-body">
+                    
+                    <form method="POST" action="/">
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <div class="form-group">
+                                {{ form.question.label(class="form-control-label") }}
+                                {{ form.question(class="form-control form-control-lg") }}
+                            </div>
+                        </fieldset>
+                        {% for question in sample_questions %}
+                        {{ question }}
+                        <br>
+                        {% endfor %}
+                        <div class="form-group" style="padding-top: 20px;">
+                            {{ form.submit(class="btn btn-dark btn-block") }}
+                        </div> 
+                        
+                        
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% if answer %}
+<div class="container-fluid">
+
+    <div class="vh-auto row h-100 justify-content-center align-items-center padding-top" style="padding-top: 50px;">
+        <div class="col-6 col-md-4 col-sm-8 my-auto">
+            <div class="card justify-content-center">
+                <div class="card-header">
+                    <h4 class="text-center">Answer</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="/">
+                        
+                        {{ answer }}
+                        <br>
+                        <br>
+                        <button type="button" class ="btn btn-dark" onclick="viewContext()">Show Context</button>
+                        <br>
+                        <div id="context" style="display:none;">
+                            {{ context }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endif %}
+
+
+<script>
+    let check = false;
+
+    function viewContext() {
+        check = !check;
+        let contextDiv = document.getElementById('context');
+        
+        if (check) {
+            contextDiv.style.display = 'block';
+        } else {
+            contextDiv.style.display = 'none';
+        }
+    }
+</script>
+
+
+<!-- JavaScript files -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
